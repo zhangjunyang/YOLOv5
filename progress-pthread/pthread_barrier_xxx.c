@@ -1,18 +1,15 @@
 /*
-********************************************************************************
+******************************************************************************
 *描述:pthread_barrier_xxx程序示例
 *Use:gcc pthread_barrier_xxx.c -lpthread
 * ./a.out
-*By:Ailson Jack
-*Date:2016.03.24
-*Blog:www.only2fire.com
-********************************************************************************
+*******************************************************************************
 */
 
-#include        <stdio.h>
-#include        <unistd.h>
-#include        <pthread.h>
-#include        <time.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <pthread.h>
+#include <time.h>
 
 pthread_barrier_t barrier;
 
