@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket demo</title>
+    <meta charset="utf8">
+</head>
+<body>
+
+  <div>
+    <section class="group-set-1 hz-hid group-set-1"> <i> </i> <em class="db fl hz-hid"> 确认车载机已安装地图导航软件 </em> </section>
+    <a href="javascript:WebSocketTest()">位置：虹桥机场</a><br /><br />
+    <input id="message" type="text" />
+    <input type="button" value="发送消息" onclick="sendMessage()" /><br /><br />
+  </div>
+
+</body>
+
+<script type="text/javascript">
+function WebSocketTest()
+{
+  if ("WebSocket" in window)
+    {
+      alert("您的浏览器支持 WebSocket!");
+      var ws = new WebSocket('ws://localhost:8080');
+      ws.onopen = function () {
+        console.log('client: ws connection is open');
+        ws.send('虹桥机场');
+      };
+      ws.onmessage = function (e) {
+        console.log('client: received %s', e.data);
+      };
+      ws.onclose = function () {
+        console.log('client: ws connection is closed');
+      };
+    }
+  else
+    {
+       alert("您的浏览器不支持 WebSocket!");
+    }
+}
+// Send a message on the WebSocket.
+function sendMessage(){
+    var msg = document.getElementById('message');
+    ws.send(msg);
+    log("Message sent");
+}
+
+</script>
+
+</html>
