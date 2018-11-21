@@ -1,0 +1,40 @@
+1、WebSocket是HTML5下一种新的协议，它实现了浏览器与服务器全双工通信，能更好的节省服务器资源和带宽并达到实时通讯的目的，它与HTTP一样通过已建立的TCP连接来传输数据
+	WebSocket复用了HTTP的握手通道。具体指的是，客户端通过HTTP请求与WebSocket服务端协商升级协议。协议升级完成后，后续的数据交换则遵照WebSocket的协议。
+	WebSocket请求
+	客户端请求:申请协议升级
+		GET /webfin/websocket/ HTTP/1.1
+		Host: localhost
+		Upgrade: websocket
+		Connection: Upgrade
+		Sec-WebSocket-Key: xqBt3ImNzJbYqRINxEFlkg==
+		Origin: http://localhost:8080
+		Sec-WebSocket-Version: 13
+		-----------------------------------------------
+		GET / HTTP/1.1
+		Connection:Upgrade
+		Host:127.0.0.1:8088
+		Origin:null
+		Sec-WebSocket-Extensions:x-webkit-deflate-frame
+		Sec-WebSocket-Key:puVOuWb7rel6z2AVZBKnfw==
+		Sec-WebSocket-Version:13
+		Upgrade:websocket
+
+		附：客户端发起的WebSocket连接报文类似传统HTTP报文，Upgrade：websocket参数值表明这是WebSocket类型请求，Sec-WebSocket-Key是WebSocket客户端发送的一个 base64编码的密文，要求服务端必须返回一个对应加密的Sec-WebSocket-Accept应答，否则客户端会抛出Error during WebSocket handshake错误，并关闭连接
+		
+	服务器端回复:响应协议升级
+		HTTP/1.1 101 Switching Protocols
+		Upgrade: websocket
+		Connection: Upgrade
+		Sec-WebSocket-Accept: K7DJLdLooIwIG/MOpvWFB3y3FE8=
+		-----------------------------------------------
+		HTTP/1.1 101 Switching Protocols
+		Connection:Upgrade
+		Server:beetle websocket server
+		Upgrade:WebSocket
+		Date:Mon, 26 Nov 2012 23:42:44 GMT
+		Access-Control-Allow-Credentials:true
+		Access-Control-Allow-Headers:content-type
+		Sec-WebSocket-Accept:FCKgUr8c7OsDsLFeJTWrJw6WO8Q=
+
+
+		附：Sec-WebSocket-Accept的值是服务端采用与客户端一致的密钥计算出来后返回客户端的，HTTP/1.1 101 Switching Protocols表示服务端接受WebSocket协议的客户端连接，经过这样的请求-响应处理后，两端的WebSocket连接握手成功, 后续就可以进行TCP通讯了

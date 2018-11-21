@@ -55,7 +55,7 @@
     });
 </script>
 ------------------------------------------------------------------------------
-<script type="text/javascript">
+<script>
 // Initialize WebSocket connection and event handlers
 function setup() {
     output = document.getElementById("output");
@@ -98,7 +98,7 @@ function log(s) {
 setup();
 </script>
 -----------------------------------------------------------------------------
-<script type="text/javascript">
+<script>
 (function(){
     var $ = function(id){return document.getElementById(id) || null;}
     var wsServer = 'ws://127.0.0.1:8080'; 
