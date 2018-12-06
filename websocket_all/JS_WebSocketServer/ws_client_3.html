@@ -19,7 +19,7 @@
 // Initialize WebSocket connection and event handlers
 function setup() {
     output = document.getElementById("output");
-    ws = new WebSocket("ws://echo.websocket.org/echo");
+    ws = new WebSocket("ws://localhost:9002/echo");
     // Listen for the connection open event then call the sendMessage function
     ws.onopen = function(e) {
         log("Connected");

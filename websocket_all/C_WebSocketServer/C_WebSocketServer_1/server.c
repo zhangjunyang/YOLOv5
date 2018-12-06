@@ -61,9 +61,9 @@ int main(int argc, char *argv[])
 	printf("Listen %d\nAccepting connections ...\n",port);
 	cliaddr_len = sizeof(cliaddr);
 	connfd = accept(listenfd, (struct sockaddr *)&cliaddr, &cliaddr_len);
-	printf("From %s at PORT %d\n",
-		       inet_ntop(AF_INET, &cliaddr.sin_addr, str, sizeof(str)),
-		       ntohs(cliaddr.sin_port));
+	// printf("From %s at PORT %d\n",
+		       // inet_ntop(AF_INET, &cliaddr.sin_addr, str, sizeof(str)),
+		       // ntohs(cliaddr.sin_port));
  
 	while (1)
 	  {
