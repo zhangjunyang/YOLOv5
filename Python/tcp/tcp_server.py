@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import socket
+import threading
 
 # 创建一个socket:
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

@@ -9,7 +9,7 @@ def loop():
     n = 0
     while n < 5:
         n = n + 1
-        print('thread %s >>> %s' % (threading.current_thread().name, n))
+        print('thread %s do work %s' % (threading.current_thread().name, n))
         time.sleep(1)
     print('thread %s ended.' % threading.current_thread().name)
 
