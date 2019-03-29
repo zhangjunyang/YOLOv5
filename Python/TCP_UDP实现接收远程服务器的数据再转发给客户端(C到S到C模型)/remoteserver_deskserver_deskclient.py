@@ -131,5 +131,9 @@ if __name__ == "__main__":
         print( ("识别到输入的IP: " % sys.argv[1]) )
         dest_host = sys.argv[1]
     print ('接收到的数据将会转发到IP: %s ' % dest_host)
+    
+    tcpServer = TcpServer()
+    tcpServer.tcpServer()
+    
     udpServer = UdpServer()
     udpServer.udpServer()
