@@ -1,18 +1,11 @@
-#include <iostream>    
-#include <pthread.h>    
-    
-using namespace std;    
-    
-#define NUM_THREADS 2    
-    
-class Hello    
+#include "pthread_create.h"    
+
+namespace nutshell {
+
+void* Hello::say_hello( void* args )    
 {    
-public:    
-    static void* say_hello( void* args )    
-    {    
-        cout << "hello...123" << endl;    
-    }    
-};    
+    cout << "hello...123" << endl;    
+}    
     
 int main()    
 {    
@@ -27,3 +20,5 @@ int main()
     }    
     pthread_exit( NULL );    
 } 
+}   
+

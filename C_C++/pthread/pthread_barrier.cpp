@@ -6,15 +6,32 @@
 *******************************************************************************
 */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <pthread.h>
 #include <time.h>
+#include "pthread_barrier.h"
 
-pthread_barrier_t barrier;
+namespace nutshell {
+    
+Task::Task() {}
 
-void *Task1(void *arg);
-void *Task2(void *arg);
+Task::~Task() {}
+
+void Task::Task1(void *arg)
+{
+    printf("Task1 will be blocked.\r\n");
+    pthread_barrier_wait(&barrier);//所有线程都被阻塞在这里
+    printf("Task1 is running.\r\n");
+    sleep(3);//延时3s
+    pthread_exit(NULL);
+}
+
+void Task::Task2(void *arg)
+{
+    printf("Task2 will be blocked.\r\n");
+    pthread_barrier_wait(&barrier);//所有线程都被阻塞在这里
+    printf("Task2 is running.\r\n");
+    sleep(3);//延时3s
+    pthread_exit(NULL);
+}
 
 int main(void)
 {
@@ -40,21 +57,6 @@ int main(void)
     pthread_join(tid, NULL);
     pthread_barrier_destroy(&barrier);
 }
-
-void *Task1(void *arg)
-{
-    printf("Task1 will be blocked.\r\n");
-    pthread_barrier_wait(&barrier);//所有线程都被阻塞在这里
-    printf("Task1 is running.\r\n");
-    sleep(3);//延时3s
-    pthread_exit(NULL);
 }
 
-void *Task2(void *arg)
-{
-    printf("Task2 will be blocked.\r\n");
-    pthread_barrier_wait(&barrier);//所有线程都被阻塞在这里
-    printf("Task2 is running.\r\n");
-    sleep(3);//延时3s
-    pthread_exit(NULL);
-}
+

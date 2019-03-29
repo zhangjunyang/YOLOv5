@@ -24,18 +24,31 @@ int main(){
     //接收客户端请求
     SOCKADDR clntAddr;
     int nSize = sizeof(SOCKADDR);
-    SOCKET clntSock = accept(servSock, (SOCKADDR*)&clntAddr, &nSize);
+    SOCKET SockTransferRoad = accept(servSock, (SOCKADDR*)&clntAddr, &nSize);
+
+    //接收客户端发送的数据
+    char szBuffer[MAXBYTE] = {0};
+    // recv(SockTransferRoad, revDataBuffer, BUFSIZ, 0);
+    // recv(SockTransferRoad, revData, BUFSIZ, 0);
+    // recv(SockTransferRoad, revData, BUFSIZ, NULL);
+    // recv(SockTransferRoad, revData, BUFSIZ, NULL);
+    recv(SockTransferRoad, szBuffer, MAXBYTE, NULL);
 
     //向客户端发送数据
-    char *str = "Hello World!";
-    send(clntSock, str, strlen(str)+sizeof(char), NULL);
+    char *str = "Hello client!";
+    // send(SockTransferRoad, sendDataBuffer, BUFSIZ, 0);
+    // send(SockTransferRoad, sendData, BUFSIZ, 0);
+    // send(SockTransferRoad, sendData, strlen(sendData)+1, NULL);
+    // send(SockTransferRoad, sendData, strlen(str)+sizeof(char), NULL);
+    send(SockTransferRoad, str, strlen(str)+sizeof(char), NULL);
 
     //关闭套接字
-    closesocket(clntSock);
+    closesocket(SockTransferRoad);
     closesocket(servSock);
 
     //终止 DLL 的使用
     WSACleanup();
 
+    system("pause");
     return 0;
 }
