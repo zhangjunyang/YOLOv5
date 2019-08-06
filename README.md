@@ -1,4 +1,4 @@
-### Linux：进程、线程、系统编程、网络编程、TCP/IP协议、C/C++、数据结构与算法
+# Linux：C、C++、Python、Shell、Java
 
 	系统编程
 		进程
