@@ -1,4 +1,4 @@
-# Linux：C、C++、Python、Shell、Java
+# Linux：C/C++、Python、Shell
 
 	系统编程
 		进程
