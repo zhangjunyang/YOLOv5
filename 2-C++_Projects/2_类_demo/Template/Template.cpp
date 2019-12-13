@@ -70,9 +70,6 @@ void Student::show(){
 
 int main(){
     //创建对象时向构造函数传参
-    stu.Student("小明", 15, 92.5f);
-    stu.show();
-
     Student stu;
     stu.Student("小明", 15, 92.5f);
     stu.show();

@@ -1,5 +1,4 @@
 #include<iostream>
-#include "People.h"
 #include "Student.h"
 using namespace std;
 
