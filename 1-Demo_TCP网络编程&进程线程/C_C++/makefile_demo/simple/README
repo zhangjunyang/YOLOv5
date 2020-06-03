@@ -1,7 +1,0 @@
-运行：
-  make -f Makefile1
-  make -f Makefile2
-  make -f Makefile3
-  make -f Makefile4
-运行：
-  app
