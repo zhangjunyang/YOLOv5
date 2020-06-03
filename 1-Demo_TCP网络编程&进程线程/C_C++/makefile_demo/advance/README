@@ -1,0 +1,5 @@
+运行：
+  make or make makefile or make -f makefile
+运行：
+  export LD_LIBRARY_PATH=./lib
+  output/app.1.0.0

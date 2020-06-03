@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>WebSocket demo</title>
+    <meta charset="utf8">
+</head>
+
+<body>
+  <style>
+  body
+  {
+    background-color:#b0c4de;
+  }
+  </style>
+
+  <div d="sse">
+    <button id='open' type="button" onclick='openClick();'>打开</button><br /><br />
+    <button id='message' type="button" onclick='openClick();'>位置：虹桥机场</button><br /><br />
+
+    <form action="ws_server.js" method="post">
+    <input id="message" type="text" />
+    <input type="button" value="发送消息" onclick="sendClick()" /><br /><br />
+    </form>
+    <button id='close' type="button" onclick='closeClick();'>关闭</button><br /><br />
+</body>
+
+<script type="text/javascript">
+
+  // Open the WebSocket
+  var url = 'ws://localhost:9002/echo';
+  ws = null;
+  function openClick()
+    {
+        if ("WebSocket" in window)
+            {
+              alert("您的浏览器支持 WebSocket!");
+
+              var ws = new WebSocket(url);
+
+              ws.onopen = function () 
+                {
+                console.log('client: ws connection is open');
+                alert("client: ws connection is open");
+                ws.send('虹桥机场');
+                alert("数据发送中...");
+
+                };
+
+              ws.onmessage = function (e) 
+                {
+                console.log('client: received %s', e.data);
+                alert("数据接收中...");
+                };
+
+              ws.onclose = function () 
+                {
+                console.log('client: ws connection is closed');
+                alert("服务器连接断开");
+                };
+            }
+        else
+            {
+              alert("您的浏览器不支持 WebSocket!");
+            }
+    }
+
+  // Send message on the WebSocket
+  function sendClick(){
+      var msg = document.getElementById('message');
+      ws.send(msg);
+      log("Send message");
+      alert("发送数据");
+  }
+
+  // Close the WebSocket
+  function closeClick(){
+      ws.close();
+      ws = null;
+      log("Close WebSocket");
+      alert("关闭连接");
+
+  }
+</script>
+</html>
