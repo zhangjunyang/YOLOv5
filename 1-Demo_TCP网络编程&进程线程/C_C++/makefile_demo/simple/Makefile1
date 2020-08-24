@@ -1,2 +1,0 @@
-app: main.c fun1.c fun2.c
-	gcc main.c fun1.c fun2.c -o app

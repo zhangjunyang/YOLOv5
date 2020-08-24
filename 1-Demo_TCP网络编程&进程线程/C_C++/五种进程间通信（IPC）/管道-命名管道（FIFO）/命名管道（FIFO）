@@ -1,9 +1,0 @@
-FIFO，也称为命名管道，它是一种文件类型。
-1、特点
-    FIFO可以在无关的进程之间交换数据，与无名管道不同。
-    FIFO有路径名与之相关联，它以一种特殊设备文件形式存在于文件系统中。
-
-2、原型
-    #include <sys/stat.h>
-    // 返回值：成功返回0，出错返回-1
-    int mkfifo(const char *pathname, mode_t mode);
